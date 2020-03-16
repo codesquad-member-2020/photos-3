@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  PhotosApp
 //
-//  Created by 임승혁 on 2020/03/16.
-//  Copyright © 2020 임승혁. All rights reserved.
+//  Created by Lin&Heidi on 2020/03/16.
+//  Copyright © 2020 Lin&Heidi. All rights reserved.
 //
 
 import UIKit
@@ -26,13 +26,23 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath)
         
-        cell.backgroundColor = UIColor(red: CGFloat.random(in: 0...1),
-                                       green: CGFloat.random(in: 0...1),
-                                       blue: CGFloat.random(in: 0...1),
-                                       alpha: 1)
+        cell.backgroundColor = UIColor.randomColor()
         
         return cell
     }
-    
-    
+}
+
+extension UIColor {
+    static func randomColor() -> UIColor {
+        return UIColor(red: CGFloat.randomForColor(),
+                       green: CGFloat.randomForColor(),
+                       blue: CGFloat.randomForColor(),
+                       alpha: 1)
+    }
+}
+
+extension CGFloat {
+    static func randomForColor() -> CGFloat {
+        return CGFloat.random(in: 0...1)
+    }
 }
