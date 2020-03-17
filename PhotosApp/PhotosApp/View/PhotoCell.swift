@@ -13,7 +13,8 @@ class PhotoCell: UICollectionViewCell {
     
     var representedAssetIdentifier: String!
     
-    func setPhoto(_ image: UIImage) {
+    func setPhoto(_ image: UIImage?) {
+        guard let image = image else { return }
         photoImageView.image = image
     }
 }
