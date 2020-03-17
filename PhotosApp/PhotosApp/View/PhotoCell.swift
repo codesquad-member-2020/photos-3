@@ -11,6 +11,8 @@ import UIKit
 class PhotoCell: UICollectionViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     
+    var representedAssetIdentifier: String!
+    
     func setPhoto(_ image: UIImage) {
         photoImageView.image = image
     }
