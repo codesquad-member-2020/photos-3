@@ -15,7 +15,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     let imageManager = PHCachingImageManager()
-    var fetchResult: PHFetchResult<PHAsset>!
     var allPhotos: PHFetchResult<PHAsset>!
     var thumbnailSize: CGSize!
     
@@ -43,9 +42,9 @@ class ViewController: UIViewController {
 
 extension ViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
-        guard fetchResult != nil, let changes = changeInstance.changeDetails(for: fetchResult) else { return }
-        fetchResult = changes.fetchResultAfterChanges
-        DispatchQueue.main.sync { collectionView.reloadData() }
+        guard allPhotos != nil, let changes = changeInstance.changeDetails(for: allPhotos) else { return }
+        allPhotos = changes.fetchResultAfterChanges
+        DispatchQueue.main.async { [weak self] in self?.collectionView.reloadData() }
     }
 }
 
