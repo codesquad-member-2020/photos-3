@@ -10,12 +10,13 @@ import UIKit
 import Photos
 
 class ViewController: UIViewController {
-    let imageManager = PHCachingImageManager()
-    var allPhotos: PHFetchResult<PHAsset>!
-    var thumbnailSize: CGSize!
     
     @IBOutlet weak var collectionViewFlowLayout: UICollectionViewFlowLayout!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    let imageManager = PHCachingImageManager()
+    var allPhotos: PHFetchResult<PHAsset>!
+    var thumbnailSize: CGSize!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,8 @@ class ViewController: UIViewController {
         title = "Photos"
         
         allPhotos = PHAsset.fetchAssets(with: nil)
+        
+        PHPhotoLibrary.shared().register(self)
         setThumbnailSize()
     }
     
@@ -30,6 +33,18 @@ class ViewController: UIViewController {
         let scale = UIScreen.main.scale
         let cellSize = collectionViewFlowLayout.itemSize
         thumbnailSize = CGSize(width: cellSize.width * scale, height: cellSize.height * scale)
+    }
+    
+    deinit {
+        PHPhotoLibrary.shared().unregisterChangeObserver(self)
+    }
+}
+
+extension ViewController: PHPhotoLibraryChangeObserver {
+    func photoLibraryDidChange(_ changeInstance: PHChange) {
+        guard allPhotos != nil, let changes = changeInstance.changeDetails(for: allPhotos) else { return }
+        allPhotos = changes.fetchResultAfterChanges
+        DispatchQueue.main.async { [weak self] in self?.collectionView.reloadData() }
     }
 }
 
