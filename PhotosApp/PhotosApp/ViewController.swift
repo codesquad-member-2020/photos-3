@@ -54,18 +54,3 @@ extension ViewController: UICollectionViewDataSource {
         return cell
     }
 }
-
-extension UIColor {
-    static func randomColor() -> UIColor {
-        return UIColor(red: CGFloat.randomForColor(),
-                       green: CGFloat.randomForColor(),
-                       blue: CGFloat.randomForColor(),
-                       alpha: 1)
-    }
-}
-
-extension CGFloat {
-    static func randomForColor() -> CGFloat {
-        return CGFloat.random(in: 0...1)
-    }
-}
