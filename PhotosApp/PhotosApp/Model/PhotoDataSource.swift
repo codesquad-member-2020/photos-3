@@ -39,12 +39,11 @@ extension PhotoDataSource: UICollectionViewDataSource {
        
        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
            let asset = self.allPhotos.object(at: indexPath.item)
-           guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoCell", for: indexPath) as? PhotoCell else { fatalError("collection view error") }
+           let cell = collectionView.dequeueReusableCell(for: indexPath) as PhotoCell
            
            imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil) { image, _ in
                    cell.setPhoto(image)
            }
-           
            return cell
        }
 }
