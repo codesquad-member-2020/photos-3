@@ -16,6 +16,7 @@
 		AB0CB229241F434100396015 /* PhotosAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB228241F434100396015 /* PhotosAppTests.swift */; };
 		AB0CB234241F434100396015 /* PhotosAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB233241F434100396015 /* PhotosAppUITests.swift */; };
 		AB0CB244241F530300396015 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB243241F530300396015 /* PhotoCell.swift */; };
+		C2949DD52420D0A60037B1C6 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2949DD42420D0A60037B1C6 /* UICollectionViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		AB0CB233241F434100396015 /* PhotosAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosAppUITests.swift; sourceTree = "<group>"; };
 		AB0CB235241F434100396015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB0CB243241F530300396015 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
+		C2949DD42420D0A60037B1C6 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		AB0CB210241F433F00396015 /* PhotosApp */ = {
 			isa = PBXGroup;
 			children = (
+				C2949DD32420D07E0037B1C6 /* Utils */,
 				AB0CB242241F52D600396015 /* View */,
 				AB0CB211241F433F00396015 /* AppDelegate.swift */,
 				AB0CB213241F433F00396015 /* SceneDelegate.swift */,
@@ -137,6 +140,14 @@
 				AB0CB243241F530300396015 /* PhotoCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C2949DD32420D07E0037B1C6 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C2949DD42420D0A60037B1C6 /* UICollectionViewExtensions.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2949DD52420D0A60037B1C6 /* UICollectionViewExtensions.swift in Sources */,
 				AB0CB244241F530300396015 /* PhotoCell.swift in Sources */,
 				AB0CB216241F433F00396015 /* ViewController.swift in Sources */,
 				AB0CB212241F433F00396015 /* AppDelegate.swift in Sources */,
