@@ -10,13 +10,34 @@ import UIKit
 
 class PhotoCell: UICollectionViewCell {
     
-    private lazy var photoImageView: UIImageView = {
+    private var photoImageView: UIImageView = {
         let view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupView()
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupView()
+    }
+    
+    convenience init() {
+        self.init(frame: .zero)
+    }
     
     func setPhoto(_ image: UIImage?) {
         guard let image = image else { return }
         photoImageView.image = image
+    }
+    
+    private func setupView() {
+        translatesAutoresizingMaskIntoConstraints = false
+        addSubview(photoImageView)
+        photoImageView.fillSuperView()
     }
 }

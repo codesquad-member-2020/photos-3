@@ -10,16 +10,16 @@ import UIKit
 
 class PhotoViewController: UICollectionViewController {
     
-    let collectionViewDataSource = PhotoDataSource()
-    
-    var photoObserver: NSObjectProtocol?
+    private let photoDataSource = PhotoDataSource()
+    private var photoObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Photos"
+        collectionView.backgroundColor = .white
         
+        collectionView.dataSource = photoDataSource
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseIdentifier)
-        collectionView.dataSource = collectionViewDataSource
         
         let center = NotificationCenter.default
         photoObserver = center.addObserver(forName: .photoDidChange) { [weak self] notification in
@@ -56,7 +56,15 @@ class PhotoViewController: UICollectionViewController {
 
 extension PhotoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = collectionView.frame.width / 3
+        let size = collectionView.frame.width / 3 - 1
         return CGSize(width: size, height: size)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
     }
 }
