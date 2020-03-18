@@ -9,16 +9,10 @@
 import UIKit
 import Photos
 
-protocol PhotoDataSourceDelegate: class {
-    func photoLibraryDidUpdate()
-}
-
 class PhotoDataSource: NSObject {
     private let imageManager = PHCachingImageManager()
     private var allPhotos: PHFetchResult<PHAsset>
     private var thumbnailSize: CGSize
-    
-    weak var delegate: PhotoDataSourceDelegate?
     
     override init() {
         self.allPhotos = PHAsset.fetchAssets(with: nil)
@@ -34,24 +28,24 @@ class PhotoDataSource: NSObject {
 
 extension PhotoDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-           return allPhotos.count
-       }
+       return allPhotos.count
+   }
+   
+   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+       let asset = self.allPhotos.object(at: indexPath.item)
+       let cell = collectionView.dequeueReusableCell(for: indexPath) as PhotoCell
        
-       func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           let asset = self.allPhotos.object(at: indexPath.item)
-           let cell = collectionView.dequeueReusableCell(for: indexPath) as PhotoCell
-           
-           imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil) { image, _ in
-                   cell.setPhoto(image)
-           }
-           return cell
+       imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil) { image, _ in
+               cell.setPhoto(image)
        }
+       return cell
+   }
 }
 
 extension PhotoDataSource: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         guard let changes = changeInstance.changeDetails(for: allPhotos) else { return }
         allPhotos = changes.fetchResultAfterChanges
-        delegate?.photoLibraryDidUpdate()
+        NotificationCenter.default.post(name: .photoDidChange, object: nil)
     }
 }
