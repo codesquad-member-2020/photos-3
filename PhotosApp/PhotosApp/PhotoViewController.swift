@@ -21,6 +21,8 @@ class PhotoViewController: UICollectionViewController {
         collectionView.dataSource = photoDataSource
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseIdentifier)
         
+        setupBarButton()
+        
         let center = NotificationCenter.default
         photoObserver = center.addObserver(forName: .photoDidChange) { [weak self] notification in
             DispatchQueue.main.async { self?.updateCollectionView(with: notification.userInfo) }
@@ -30,6 +32,13 @@ class PhotoViewController: UICollectionViewController {
     deinit {
         guard let observer = photoObserver else { return }
         NotificationCenter.default.removeObserver(observer)
+    }
+    
+    @objc private func showDoodles() { }
+    
+    private func setupBarButton() {
+        let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showDoodles))
+        navigationItem.leftBarButtonItem = button
     }
     
     private func updateCollectionView(with changes: Dictionary<AnyHashable, Any>?) {
