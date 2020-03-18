@@ -9,7 +9,11 @@
 import UIKit
 
 class PhotoCell: UICollectionViewCell {
-    @IBOutlet weak var photoImageView: UIImageView!
+    
+    private lazy var photoImageView: UIImageView = {
+        let view = UIImageView()
+        return view
+    }()
     
     func setPhoto(_ image: UIImage?) {
         guard let image = image else { return }

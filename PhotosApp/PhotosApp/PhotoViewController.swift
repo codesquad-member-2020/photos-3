@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PhotoViewController.swift
 //  PhotosApp
 //
 //  Created by Lin&Heidi on 2020/03/16.
@@ -8,9 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
-    @IBOutlet var collectionView: UICollectionView!
+class PhotoViewController: UICollectionViewController {
     
     let collectionViewDataSource = PhotoDataSource()
     
@@ -20,6 +18,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         title = "Photos"
         
+        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseIdentifier)
         collectionView.dataSource = collectionViewDataSource
         
         let center = NotificationCenter.default
@@ -52,5 +51,12 @@ class ViewController: UIViewController {
         } else {
             collectionView.reloadData()
         }
+    }
+}
+
+extension PhotoViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = collectionView.frame.width / 3
+        return CGSize(width: size, height: size)
     }
 }

@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		AB0CB212241F433F00396015 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB211241F433F00396015 /* AppDelegate.swift */; };
 		AB0CB214241F433F00396015 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB213241F433F00396015 /* SceneDelegate.swift */; };
-		AB0CB216241F433F00396015 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB215241F433F00396015 /* ViewController.swift */; };
-		AB0CB219241F433F00396015 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0CB217241F433F00396015 /* Main.storyboard */; };
+		AB0CB216241F433F00396015 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB215241F433F00396015 /* PhotoViewController.swift */; };
 		AB0CB21B241F434100396015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0CB21A241F434100396015 /* Assets.xcassets */; };
 		AB0CB21E241F434100396015 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0CB21C241F434100396015 /* LaunchScreen.storyboard */; };
 		AB0CB229241F434100396015 /* PhotosAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB228241F434100396015 /* PhotosAppTests.swift */; };
@@ -42,8 +41,7 @@
 		AB0CB20E241F433F00396015 /* PhotosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0CB211241F433F00396015 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB0CB213241F433F00396015 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB0CB215241F433F00396015 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AB0CB218241F433F00396015 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		AB0CB215241F433F00396015 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		AB0CB21A241F434100396015 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB0CB21D241F434100396015 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB0CB21F241F434100396015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,8 +110,7 @@
 				AB0CB242241F52D600396015 /* View */,
 				AB0CB211241F433F00396015 /* AppDelegate.swift */,
 				AB0CB213241F433F00396015 /* SceneDelegate.swift */,
-				AB0CB215241F433F00396015 /* ViewController.swift */,
-				AB0CB217241F433F00396015 /* Main.storyboard */,
+				AB0CB215241F433F00396015 /* PhotoViewController.swift */,
 				AB0CB21A241F434100396015 /* Assets.xcassets */,
 				AB0CB21C241F434100396015 /* LaunchScreen.storyboard */,
 				AB0CB21F241F434100396015 /* Info.plist */,
@@ -270,7 +267,6 @@
 			files = (
 				AB0CB21E241F434100396015 /* LaunchScreen.storyboard in Resources */,
 				AB0CB21B241F434100396015 /* Assets.xcassets in Resources */,
-				AB0CB219241F433F00396015 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +293,7 @@
 			files = (
 				AB0CB244241F530300396015 /* PhotoCell.swift in Sources */,
 				AB7CD9442420D6EC00392F6F /* PhotoDataSource.swift in Sources */,
-				AB0CB216241F433F00396015 /* ViewController.swift in Sources */,
+				AB0CB216241F433F00396015 /* PhotoViewController.swift in Sources */,
 				AB0CB212241F433F00396015 /* AppDelegate.swift in Sources */,
 				C2949DDA2421CC7D0037B1C6 /* NotificationExtensions.swift in Sources */,
 				C2949DD8242105C10037B1C6 /* UICollectionViewExtensions.swift in Sources */,
@@ -337,14 +333,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		AB0CB217241F433F00396015 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AB0CB218241F433F00396015 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AB0CB21C241F434100396015 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
