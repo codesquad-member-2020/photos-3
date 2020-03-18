@@ -22,13 +22,35 @@ class ViewController: UIViewController {
         
         collectionView.dataSource = collectionViewDataSource
         
-        photoObserver = NotificationCenter.default.addObserver(forName: .photoDidChange) { [weak self] _ in
-            DispatchQueue.main.sync { self?.collectionView.reloadData() }
+        let center = NotificationCenter.default
+        photoObserver = center.addObserver(forName: .photoDidChange) { [weak self] notification in
+            DispatchQueue.main.async { self?.updateCollectionView(with: notification.userInfo) }
         }
     }
     
     deinit {
         guard let observer = photoObserver else { return }
         NotificationCenter.default.removeObserver(observer)
+    }
+    
+    private func updateCollectionView(with changes: Dictionary<AnyHashable, Any>?) {
+        guard let collectionView = collectionView,
+            let changes = changes as? Dictionary<PhotoDataSource.ChangeType, Any> else { return }
+        
+        if let isIncremental = changes[.isIncremental] as? Bool, isIncremental {
+            collectionView.performBatchUpdates({
+                if let removed = changes[.removed] as? [IndexPath], !removed.isEmpty {
+                    collectionView.deleteItems(at: removed)
+                }
+                if let inserted = changes[.inserted] as? [IndexPath], !inserted.isEmpty {
+                    collectionView.insertItems(at: inserted)
+                }
+            })
+            if let changed = changes[.changed] as? [IndexPath], !changed.isEmpty {
+                collectionView.reloadItems(at: changed)
+            }
+        } else {
+            collectionView.reloadData()
+        }
     }
 }

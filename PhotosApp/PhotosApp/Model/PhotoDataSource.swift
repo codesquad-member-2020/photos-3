@@ -10,6 +10,13 @@ import UIKit
 import Photos
 
 class PhotoDataSource: NSObject {
+
+    enum ChangeType: Hashable {
+        case isIncremental
+        case inserted, removed
+        case changed
+    }
+    
     private let imageManager = PHCachingImageManager()
     private var allPhotos: PHFetchResult<PHAsset>
     private var thumbnailSize: CGSize
@@ -46,6 +53,20 @@ extension PhotoDataSource: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         guard let changes = changeInstance.changeDetails(for: allPhotos) else { return }
         allPhotos = changes.fetchResultAfterChanges
-        NotificationCenter.default.post(name: .photoDidChange, object: nil)
+        
+        var changeInfo: Dictionary<ChangeType, Any> = [:]
+        changeInfo[.isIncremental] = changes.hasIncrementalChanges
+        
+        if let removed = changes.removedIndexes {
+            changeInfo[.removed] = removed.map { IndexPath(item: $0, section: 0) }
+        }
+        if let inserted = changes.insertedIndexes {
+            changeInfo[.inserted] = inserted.map { IndexPath(item: $0, section: 0) }
+        }
+        if let changed = changes.changedIndexes {
+            changeInfo[.changed] = changed.map { IndexPath(item: $0, section: 0) }
+        }
+        
+        NotificationCenter.default.post(name: .photoDidChange, object: nil, userInfo: changeInfo)
     }
 }
