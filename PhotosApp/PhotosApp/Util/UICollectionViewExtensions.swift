@@ -14,7 +14,7 @@ protocol ReusableView {
 
 extension ReusableView {
     static var reuseIdentifier: String {
-        return "PhotoCell"
+        return String(describing: self)
     }
 }
 
