@@ -23,7 +23,7 @@ class ViewController: UIViewController {
         collectionView.dataSource = collectionViewDataSource
         
         photoObserver = NotificationCenter.default.addObserver(forName: .photoDidChange) { [weak self] _ in
-            DispatchQueue.main.sync { self?.collectionView.reloadData() }
+            DispatchQueue.main.async { self?.collectionView.reloadData() }
         }
     }
     
