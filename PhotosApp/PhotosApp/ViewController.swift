@@ -9,40 +9,48 @@
 import UIKit
 
 class ViewController: UIViewController {
-
-    @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet var collectionView: UICollectionView!
+    
+    let collectionViewDataSource = PhotoDataSource()
+    
+    var photoObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.dataSource = self
-    }
-}
-
-extension ViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 40
+        title = "Photos"
+        
+        collectionView.dataSource = collectionViewDataSource
+        
+        let center = NotificationCenter.default
+        photoObserver = center.addObserver(forName: .photoDidChange) { [weak self] notification in
+            DispatchQueue.main.async { self?.updateCollectionView(with: notification.userInfo) }
+        }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewCell", for: indexPath)
-        
-        cell.backgroundColor = UIColor.randomColor()
-        
-        return cell
+    deinit {
+        guard let observer = photoObserver else { return }
+        NotificationCenter.default.removeObserver(observer)
     }
-}
-
-extension UIColor {
-    static func randomColor() -> UIColor {
-        return UIColor(red: CGFloat.randomForColor(),
-                       green: CGFloat.randomForColor(),
-                       blue: CGFloat.randomForColor(),
-                       alpha: 1)
-    }
-}
-
-extension CGFloat {
-    static func randomForColor() -> CGFloat {
-        return CGFloat.random(in: 0...1)
+    
+    private func updateCollectionView(with changes: Dictionary<AnyHashable, Any>?) {
+        guard let collectionView = collectionView,
+            let changes = changes as? Dictionary<PhotoDataSource.ChangeType, Any> else { return }
+        
+        if let isIncremental = changes[.isIncremental] as? Bool, isIncremental {
+            collectionView.performBatchUpdates({
+                if let removed = changes[.removed] as? [IndexPath], !removed.isEmpty {
+                    collectionView.deleteItems(at: removed)
+                }
+                if let inserted = changes[.inserted] as? [IndexPath], !inserted.isEmpty {
+                    collectionView.insertItems(at: inserted)
+                }
+            })
+            if let changed = changes[.changed] as? [IndexPath], !changed.isEmpty {
+                collectionView.reloadItems(at: changed)
+            }
+        } else {
+            collectionView.reloadData()
+        }
     }
 }
