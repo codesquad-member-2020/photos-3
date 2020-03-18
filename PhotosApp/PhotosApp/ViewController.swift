@@ -14,16 +14,21 @@ class ViewController: UIViewController {
     
     let collectionViewDataSource = PhotoDataSource()
     
+    var photoObserver: NSObjectProtocol?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.dataSource = collectionViewDataSource
-        collectionViewDataSource.delegate = self
         title = "Photos"
+        
+        collectionView.dataSource = collectionViewDataSource
+        
+        photoObserver = NotificationCenter.default.addObserver(forName: .photoDidChange) { [weak self] _ in
+            DispatchQueue.main.sync { self?.collectionView.reloadData() }
+        }
     }
-}
-
-extension ViewController: PhotoDataSourceDelegate {
-    func photoLibraryDidUpdate() {
-        DispatchQueue.main.sync { collectionView.reloadData() }
+    
+    deinit {
+        guard let observer = photoObserver else { return }
+        NotificationCenter.default.removeObserver(observer)
     }
 }
