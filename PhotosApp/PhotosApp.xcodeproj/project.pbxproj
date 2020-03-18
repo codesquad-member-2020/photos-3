@@ -16,6 +16,7 @@
 		AB0CB234241F434100396015 /* PhotosAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB233241F434100396015 /* PhotosAppUITests.swift */; };
 		AB0CB244241F530300396015 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB243241F530300396015 /* PhotoCell.swift */; };
 		AB7CD9442420D6EC00392F6F /* PhotoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD9432420D6EC00392F6F /* PhotoDataSource.swift */; };
+		C29035172422132D00E47CDC /* UIView+FillSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29035162422132D00E47CDC /* UIView+FillSuperView.swift */; };
 		C2949DD8242105C10037B1C6 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2949DD7242105C10037B1C6 /* UICollectionViewExtensions.swift */; };
 		C2949DDA2421CC7D0037B1C6 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2949DD92421CC7D0037B1C6 /* NotificationExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		AB0CB235241F434100396015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB0CB243241F530300396015 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		AB7CD9432420D6EC00392F6F /* PhotoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataSource.swift; sourceTree = "<group>"; };
+		C29035162422132D00E47CDC /* UIView+FillSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FillSuperView.swift"; sourceTree = "<group>"; };
 		C2949DD7242105C10037B1C6 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		C2949DD92421CC7D0037B1C6 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,6 +159,7 @@
 			children = (
 				C2949DD7242105C10037B1C6 /* UICollectionViewExtensions.swift */,
 				C2949DD92421CC7D0037B1C6 /* NotificationExtensions.swift */,
+				C29035162422132D00E47CDC /* UIView+FillSuperView.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -293,6 +296,7 @@
 			files = (
 				AB0CB244241F530300396015 /* PhotoCell.swift in Sources */,
 				AB7CD9442420D6EC00392F6F /* PhotoDataSource.swift in Sources */,
+				C29035172422132D00E47CDC /* UIView+FillSuperView.swift in Sources */,
 				AB0CB216241F433F00396015 /* PhotoViewController.swift in Sources */,
 				AB0CB212241F433F00396015 /* AppDelegate.swift in Sources */,
 				C2949DDA2421CC7D0037B1C6 /* NotificationExtensions.swift in Sources */,
