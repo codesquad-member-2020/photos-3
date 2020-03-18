@@ -29,12 +29,27 @@ class PhotoViewController: UICollectionViewController {
         }
     }
     
+    override init(collectionViewLayout layout: UICollectionViewLayout) {
+        super.init(collectionViewLayout: layout)
+    }
+    
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+    }
+    
+    convenience init() {
+        self.init(collectionViewLayout: UICollectionViewFlowLayout())
+    }
+    
     deinit {
         guard let observer = photoObserver else { return }
         NotificationCenter.default.removeObserver(observer)
     }
     
-    @objc private func showDoodles() { }
+    @objc private func showDoodles() {
+        let nextViewController = UINavigationController(rootViewController: DoodleViewController())
+        present(nextViewController, animated: true)
+    }
     
     private func setupBarButton() {
         let button = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showDoodles))
