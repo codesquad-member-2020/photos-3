@@ -35,18 +35,20 @@ class PhotoDataSource: NSObject {
 
 extension PhotoDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return allPhotos.count
-   }
-   
-   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-       let asset = self.allPhotos.object(at: indexPath.item)
-       let cell = collectionView.dequeueReusableCell(for: indexPath) as PhotoCell
-       
-       imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil) { image, _ in
-               cell.setPhoto(image)
-       }
-       return cell
-   }
+        return allPhotos.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let asset = self.allPhotos.object(at: indexPath.item)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCell.reuseIdentifier, for: indexPath) as? PhotoCell else {
+            return PhotoCell()
+        }
+        
+        imageManager.requestImage(for: asset, targetSize: thumbnailSize, contentMode: .aspectFill, options: nil) { image, _ in
+            cell.setPhoto(image)
+        }
+        return cell
+    }
 }
 
 extension PhotoDataSource: PHPhotoLibraryChangeObserver {
