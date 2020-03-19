@@ -6,3 +6,8 @@ iOS 3월 연습 - 3팀
 **실행 결과**
 ![step2_result](step2_result.png)
 
+### Doodle 이미지를 보여주는 화면 구현
+
+**실행 결과**
+![step3_result](step3_result.png)
+
