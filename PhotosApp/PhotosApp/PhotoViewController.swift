@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  PhotoViewController.swift
 //  PhotosApp
 //
 //  Created by Lin&Heidi on 2020/03/16.
@@ -8,19 +8,18 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class PhotoViewController: UICollectionViewController {
     
-    @IBOutlet var collectionView: UICollectionView!
-    
-    let collectionViewDataSource = PhotoDataSource()
-    
-    var photoObserver: NSObjectProtocol?
+    private let photoDataSource = PhotoDataSource()
+    private var photoObserver: NSObjectProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Photos"
+        collectionView.backgroundColor = .white
         
-        collectionView.dataSource = collectionViewDataSource
+        collectionView.dataSource = photoDataSource
+        collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseIdentifier)
         
         let center = NotificationCenter.default
         photoObserver = center.addObserver(forName: .photoDidChange) { [weak self] notification in
@@ -52,5 +51,20 @@ class ViewController: UIViewController {
         } else {
             collectionView.reloadData()
         }
+    }
+}
+
+extension PhotoViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = collectionView.frame.width / 3 - 1
+        return CGSize(width: size, height: size)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 1
     }
 }
