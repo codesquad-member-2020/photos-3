@@ -11,7 +11,11 @@ import UIKit
 
 class JsonDecoder {
     private let doodleJsonURL = "https://public.codesquad.kr/jk/doodle.json"
-    var doodleImgData: [DoodleImageData]?
+    private var doodleImgData = [DoodleImageData]()
+    
+    var doodleCount: Int {
+        return doodleImgData.count
+    }
     
     init() {
         doodleJsonDecode()
@@ -24,18 +28,21 @@ class JsonDecoder {
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .formatted(.dateFormatter)
             
-            if let data = data, let doodleImgDataList = try?
-                decoder.decode([DoodleImageData].self, from: data) {
+            if let data = data,
+                let doodleImgDataList = try? decoder.decode([DoodleImageData].self, from: data) {
                 self.doodleImgData = doodleImgDataList
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: .doodleDidChange, object: nil)
+                }
             }
         }.resume()
     }
     
-    // collection view indexpath item을 받아 다운로드해서 보여줌
-    // collection view에선 비동기로 다운할수있게...
-    private func fetchImage(index: Int) -> UIImage {
-        guard let url = doodleImgData?[index].image else { return UIImage() }
-        let data = try! Data(contentsOf: url)
-        return UIImage(data: data)!
+    func fetchImage(index: Int) -> UIImage {
+        guard let data = try? Data(contentsOf: doodleImgData[index].image),
+            let image = UIImage(data: data) else {
+            return UIImage()
+        }
+        return image
     }
 }

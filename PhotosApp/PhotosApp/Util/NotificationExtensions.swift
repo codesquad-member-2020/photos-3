@@ -17,4 +17,5 @@ extension NotificationCenter {
 
 extension Notification.Name {
     static let photoDidChange = Notification.Name("photoDidChange")
+    static let doodleDidChange = Notification.Name("doodleDidChange")
 }
