@@ -9,15 +9,18 @@
 /* Begin PBXBuildFile section */
 		AB0CB212241F433F00396015 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB211241F433F00396015 /* AppDelegate.swift */; };
 		AB0CB214241F433F00396015 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB213241F433F00396015 /* SceneDelegate.swift */; };
-		AB0CB216241F433F00396015 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB215241F433F00396015 /* PhotoViewController.swift */; };
 		AB0CB21B241F434100396015 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB0CB21A241F434100396015 /* Assets.xcassets */; };
 		AB0CB21E241F434100396015 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB0CB21C241F434100396015 /* LaunchScreen.storyboard */; };
 		AB0CB229241F434100396015 /* PhotosAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB228241F434100396015 /* PhotosAppTests.swift */; };
 		AB0CB234241F434100396015 /* PhotosAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB233241F434100396015 /* PhotosAppUITests.swift */; };
 		AB0CB244241F530300396015 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB243241F530300396015 /* PhotoCell.swift */; };
 		AB7CD9442420D6EC00392F6F /* PhotoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD9432420D6EC00392F6F /* PhotoDataSource.swift */; };
-		C231F8D92422420400494624 /* DoodleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C231F8D82422420400494624 /* DoodleViewController.swift */; };
-		C29035172422132D00E47CDC /* UIView+FillSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C29035162422132D00E47CDC /* UIView+FillSuperView.swift */; };
+		AB7CD9462422115A00392F6F /* DoodleImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD9452422115A00392F6F /* DoodleImageData.swift */; };
+		AB7CD948242212CE00392F6F /* JsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD947242212CE00392F6F /* JsonDecoder.swift */; };
+		AB7CD94C2422866700392F6F /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD94B2422866700392F6F /* DateFormatterExtensions.swift */; };
+		AB7CD94F24232A5300392F6F /* DoodleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD94D24232A5300392F6F /* DoodleViewController.swift */; };
+		AB7CD95024232A5300392F6F /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD94E24232A5300392F6F /* PhotoViewController.swift */; };
+		AB7CD95224232A6600392F6F /* UIView+FillSuperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD95124232A6600392F6F /* UIView+FillSuperView.swift */; };
 		C2949DD8242105C10037B1C6 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2949DD7242105C10037B1C6 /* UICollectionViewExtensions.swift */; };
 		C2949DDA2421CC7D0037B1C6 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2949DD92421CC7D0037B1C6 /* NotificationExtensions.swift */; };
 /* End PBXBuildFile section */
@@ -43,7 +46,6 @@
 		AB0CB20E241F433F00396015 /* PhotosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB0CB211241F433F00396015 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB0CB213241F433F00396015 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		AB0CB215241F433F00396015 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		AB0CB21A241F434100396015 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB0CB21D241F434100396015 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AB0CB21F241F434100396015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -55,8 +57,12 @@
 		AB0CB235241F434100396015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB0CB243241F530300396015 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		AB7CD9432420D6EC00392F6F /* PhotoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataSource.swift; sourceTree = "<group>"; };
-		C231F8D82422420400494624 /* DoodleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleViewController.swift; sourceTree = "<group>"; };
-		C29035162422132D00E47CDC /* UIView+FillSuperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+FillSuperView.swift"; sourceTree = "<group>"; };
+		AB7CD9452422115A00392F6F /* DoodleImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleImageData.swift; sourceTree = "<group>"; };
+		AB7CD947242212CE00392F6F /* JsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecoder.swift; sourceTree = "<group>"; };
+		AB7CD94B2422866700392F6F /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
+		AB7CD94D24232A5300392F6F /* DoodleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoodleViewController.swift; sourceTree = "<group>"; };
+		AB7CD94E24232A5300392F6F /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		AB7CD95124232A6600392F6F /* UIView+FillSuperView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+FillSuperView.swift"; sourceTree = "<group>"; };
 		C2949DD7242105C10037B1C6 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		C2949DD92421CC7D0037B1C6 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,13 +115,13 @@
 		AB0CB210241F433F00396015 /* PhotosApp */ = {
 			isa = PBXGroup;
 			children = (
+				AB7CD94D24232A5300392F6F /* DoodleViewController.swift */,
+				AB7CD94E24232A5300392F6F /* PhotoViewController.swift */,
 				C2949DD62421055C0037B1C6 /* Util */,
 				AB7CD93E2420D04200392F6F /* Model */,
 				AB0CB242241F52D600396015 /* View */,
 				AB0CB211241F433F00396015 /* AppDelegate.swift */,
 				AB0CB213241F433F00396015 /* SceneDelegate.swift */,
-				AB0CB215241F433F00396015 /* PhotoViewController.swift */,
-				C231F8D82422420400494624 /* DoodleViewController.swift */,
 				AB0CB21A241F434100396015 /* Assets.xcassets */,
 				AB0CB21C241F434100396015 /* LaunchScreen.storyboard */,
 				AB0CB21F241F434100396015 /* Info.plist */,
@@ -153,6 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				AB7CD9432420D6EC00392F6F /* PhotoDataSource.swift */,
+				AB7CD9452422115A00392F6F /* DoodleImageData.swift */,
+				AB7CD947242212CE00392F6F /* JsonDecoder.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -160,9 +168,10 @@
 		C2949DD62421055C0037B1C6 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				AB7CD95124232A6600392F6F /* UIView+FillSuperView.swift */,
 				C2949DD7242105C10037B1C6 /* UICollectionViewExtensions.swift */,
 				C2949DD92421CC7D0037B1C6 /* NotificationExtensions.swift */,
-				C29035162422132D00E47CDC /* UIView+FillSuperView.swift */,
+				AB7CD94B2422866700392F6F /* DateFormatterExtensions.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -299,13 +308,16 @@
 			files = (
 				AB0CB244241F530300396015 /* PhotoCell.swift in Sources */,
 				AB7CD9442420D6EC00392F6F /* PhotoDataSource.swift in Sources */,
-				C29035172422132D00E47CDC /* UIView+FillSuperView.swift in Sources */,
-				AB0CB216241F433F00396015 /* PhotoViewController.swift in Sources */,
+				AB7CD95224232A6600392F6F /* UIView+FillSuperView.swift in Sources */,
 				AB0CB212241F433F00396015 /* AppDelegate.swift in Sources */,
 				C2949DDA2421CC7D0037B1C6 /* NotificationExtensions.swift in Sources */,
 				C2949DD8242105C10037B1C6 /* UICollectionViewExtensions.swift in Sources */,
-				C231F8D92422420400494624 /* DoodleViewController.swift in Sources */,
+				AB7CD94C2422866700392F6F /* DateFormatterExtensions.swift in Sources */,
 				AB0CB214241F433F00396015 /* SceneDelegate.swift in Sources */,
+				AB7CD948242212CE00392F6F /* JsonDecoder.swift in Sources */,
+				AB7CD9462422115A00392F6F /* DoodleImageData.swift in Sources */,
+				AB7CD94F24232A5300392F6F /* DoodleViewController.swift in Sources */,
+				AB7CD95024232A5300392F6F /* PhotoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
