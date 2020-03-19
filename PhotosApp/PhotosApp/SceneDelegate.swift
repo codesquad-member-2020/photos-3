@@ -15,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            let rootViewController = PhotoViewController(collectionViewLayout: UICollectionViewFlowLayout())
+            let rootViewController = PhotoViewController()
             window.rootViewController = UINavigationController(rootViewController: rootViewController)
             self.window = window
             window.makeKeyAndVisible()
@@ -24,4 +24,3 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
     }
 }
-
