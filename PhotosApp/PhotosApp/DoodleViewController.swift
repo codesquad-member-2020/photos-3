@@ -62,6 +62,18 @@ class DoodleViewController: UICollectionViewController {
                                      action: #selector(dismissDoodles))
         navigationItem.rightBarButtonItem = button
     }
+    
+    private func enableSelectMenu(cell: UICollectionViewCell) {
+        let selectMenuItem = UIMenuController.shared
+        let selectItem = UIMenuItem(title: "save", action: #selector(saveImage))
+        
+        selectMenuItem.menuItems = [selectItem]
+        selectMenuItem.showMenu(from: cell, rect: cell.contentView.frame)
+    }
+    
+    @objc private func saveImage() {
+       
+    }
 }
 
 extension DoodleViewController: UICollectionViewDelegateFlowLayout {
@@ -90,8 +102,9 @@ extension DoodleViewController: UIGestureRecognizerDelegate {
             let indexPath = self.collectionView.indexPathForItem(at: point)
 
             if let index = indexPath {
-                var cell = self.collectionView.cellForItem(at: index)
-                print(index)
+                let cell = self.collectionView.cellForItem(at: index)
+                cell?.becomeFirstResponder()
+                enableSelectMenu(cell: cell!)
             } else {
                 print("Could not find index path")
             }
