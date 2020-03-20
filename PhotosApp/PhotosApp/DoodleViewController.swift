@@ -26,6 +26,11 @@ class DoodleViewController: UICollectionViewController {
             DispatchQueue.main.async { self?.collectionView.reloadData() }
         }
         
+        let longPressDetect = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        longPressDetect.delegate = self
+        longPressDetect.minimumPressDuration = 1.0
+        self.collectionView.addGestureRecognizer(longPressDetect)
+        
         setupBarButton()
     }
     
@@ -71,5 +76,25 @@ extension DoodleViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 1
+    }
+}
+
+extension DoodleViewController: UIGestureRecognizerDelegate {
+    @objc func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizer.State.ended {
+            return
+        }
+        else if sender.state == UIGestureRecognizer.State.began
+        {
+            let point = sender.location(in: self.collectionView)
+            let indexPath = self.collectionView.indexPathForItem(at: point)
+
+            if let index = indexPath {
+                var cell = self.collectionView.cellForItem(at: index)
+                print(index)
+            } else {
+                print("Could not find index path")
+            }
+        }
     }
 }
