@@ -10,12 +10,16 @@ import UIKit
 
 class DoodleCell: UICollectionViewCell {
     
-    private var doodleImageView: UIImageView = {
+    private(set) var doodleImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit
         return view
     }()
+    
+    override var canBecomeFirstResponder: Bool {
+        return true
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
