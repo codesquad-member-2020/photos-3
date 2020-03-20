@@ -119,11 +119,10 @@
 		AB0CB210241F433F00396015 /* PhotosApp */ = {
 			isa = PBXGroup;
 			children = (
-				C2949DD62421055C0037B1C6 /* Util */,
-				AB0CB242241F52D600396015 /* View */,
-				AB7CD93E2420D04200392F6F /* Model */,
-				AB7CD94E24232A5300392F6F /* PhotoViewController.swift */,
-				AB7CD94D24232A5300392F6F /* DoodleViewController.swift */,
+				C2949DD62421055C0037B1C6 /* Utils */,
+				AB7CD93E2420D04200392F6F /* Models */,
+				AB0CB242241F52D600396015 /* Views */,
+				C231F8FE242484EF00494624 /* Controllers */,
 				AB0CB211241F433F00396015 /* AppDelegate.swift */,
 				AB0CB213241F433F00396015 /* SceneDelegate.swift */,
 				AB0CB21A241F434100396015 /* Assets.xcassets */,
@@ -151,16 +150,16 @@
 			path = PhotosAppUITests;
 			sourceTree = "<group>";
 		};
-		AB0CB242241F52D600396015 /* View */ = {
+		AB0CB242241F52D600396015 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				AB0CB243241F530300396015 /* PhotoCell.swift */,
 				C231F8FA24237EE600494624 /* DoodleCell.swift */,
 			);
-			path = View;
+			path = Views;
 			sourceTree = "<group>";
 		};
-		AB7CD93E2420D04200392F6F /* Model */ = {
+		AB7CD93E2420D04200392F6F /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				AB7CD9432420D6EC00392F6F /* PhotoDataSource.swift */,
@@ -168,10 +167,19 @@
 				AB7CD9452422115A00392F6F /* DoodleImageData.swift */,
 				AB7CD947242212CE00392F6F /* JsonDecoder.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
-		C2949DD62421055C0037B1C6 /* Util */ = {
+		C231F8FE242484EF00494624 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				AB7CD94D24232A5300392F6F /* DoodleViewController.swift */,
+				AB7CD94E24232A5300392F6F /* PhotoViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C2949DD62421055C0037B1C6 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
 				AB7CD95124232A6600392F6F /* UIView+FillSuperView.swift */,
@@ -179,7 +187,7 @@
 				C2949DD92421CC7D0037B1C6 /* NotificationExtensions.swift */,
 				AB7CD94B2422866700392F6F /* DateFormatterExtensions.swift */,
 			);
-			path = Util;
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
