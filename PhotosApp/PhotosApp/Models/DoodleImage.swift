@@ -1,5 +1,5 @@
 //
-//  ImageData.swift
+//  DoodleImage.swift
 //  PhotosApp
 //
 //  Created by 임승혁 on 2020/03/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct DoodleImageData: Codable {
+struct DoodleImage: Codable {
     let title: String
     let image: URL
     let date: Date

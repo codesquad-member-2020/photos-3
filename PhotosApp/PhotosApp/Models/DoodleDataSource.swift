@@ -9,7 +9,7 @@
 import UIKit
 
 class DoodleDataSource: NSObject {
-    private let remoteSource = JsonDecoder()
+    private let remoteSource = DoodleAPIClient()
 }
 
 extension DoodleDataSource: UICollectionViewDataSource {

@@ -15,8 +15,7 @@
 		AB0CB234241F434100396015 /* PhotosAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB233241F434100396015 /* PhotosAppUITests.swift */; };
 		AB0CB244241F530300396015 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0CB243241F530300396015 /* PhotoCell.swift */; };
 		AB7CD9442420D6EC00392F6F /* PhotoDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD9432420D6EC00392F6F /* PhotoDataSource.swift */; };
-		AB7CD9462422115A00392F6F /* DoodleImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD9452422115A00392F6F /* DoodleImageData.swift */; };
-		AB7CD948242212CE00392F6F /* JsonDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD947242212CE00392F6F /* JsonDecoder.swift */; };
+		AB7CD9462422115A00392F6F /* DoodleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD9452422115A00392F6F /* DoodleImage.swift */; };
 		AB7CD94C2422866700392F6F /* DateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD94B2422866700392F6F /* DateFormatterExtensions.swift */; };
 		AB7CD94F24232A5300392F6F /* DoodleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD94D24232A5300392F6F /* DoodleViewController.swift */; };
 		AB7CD95024232A5300392F6F /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7CD94E24232A5300392F6F /* PhotoViewController.swift */; };
@@ -25,6 +24,7 @@
 		C231F8FD24237FE900494624 /* DoodleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C231F8FC24237FE900494624 /* DoodleDataSource.swift */; };
 		C2949DD8242105C10037B1C6 /* UICollectionViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2949DD7242105C10037B1C6 /* UICollectionViewExtensions.swift */; };
 		C2949DDA2421CC7D0037B1C6 /* NotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2949DD92421CC7D0037B1C6 /* NotificationExtensions.swift */; };
+		C2C1D4CC24249C1C0062BA4E /* DoodleAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2C1D4CB24249C1C0062BA4E /* DoodleAPIClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,8 +59,7 @@
 		AB0CB235241F434100396015 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB0CB243241F530300396015 /* PhotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCell.swift; sourceTree = "<group>"; };
 		AB7CD9432420D6EC00392F6F /* PhotoDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDataSource.swift; sourceTree = "<group>"; };
-		AB7CD9452422115A00392F6F /* DoodleImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleImageData.swift; sourceTree = "<group>"; };
-		AB7CD947242212CE00392F6F /* JsonDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonDecoder.swift; sourceTree = "<group>"; };
+		AB7CD9452422115A00392F6F /* DoodleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleImage.swift; sourceTree = "<group>"; };
 		AB7CD94B2422866700392F6F /* DateFormatterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtensions.swift; sourceTree = "<group>"; };
 		AB7CD94D24232A5300392F6F /* DoodleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoodleViewController.swift; sourceTree = "<group>"; };
 		AB7CD94E24232A5300392F6F /* PhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +68,7 @@
 		C231F8FC24237FE900494624 /* DoodleDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoodleDataSource.swift; sourceTree = "<group>"; };
 		C2949DD7242105C10037B1C6 /* UICollectionViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtensions.swift; sourceTree = "<group>"; };
 		C2949DD92421CC7D0037B1C6 /* NotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationExtensions.swift; sourceTree = "<group>"; };
+		C2C1D4CB24249C1C0062BA4E /* DoodleAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DoodleAPIClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,8 +164,8 @@
 			children = (
 				AB7CD9432420D6EC00392F6F /* PhotoDataSource.swift */,
 				C231F8FC24237FE900494624 /* DoodleDataSource.swift */,
-				AB7CD9452422115A00392F6F /* DoodleImageData.swift */,
-				AB7CD947242212CE00392F6F /* JsonDecoder.swift */,
+				AB7CD9452422115A00392F6F /* DoodleImage.swift */,
+				C2C1D4CB24249C1C0062BA4E /* DoodleAPIClient.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -329,8 +329,8 @@
 				AB7CD94C2422866700392F6F /* DateFormatterExtensions.swift in Sources */,
 				C231F8FB24237EE600494624 /* DoodleCell.swift in Sources */,
 				AB0CB214241F433F00396015 /* SceneDelegate.swift in Sources */,
-				AB7CD948242212CE00392F6F /* JsonDecoder.swift in Sources */,
-				AB7CD9462422115A00392F6F /* DoodleImageData.swift in Sources */,
+				AB7CD9462422115A00392F6F /* DoodleImage.swift in Sources */,
+				C2C1D4CC24249C1C0062BA4E /* DoodleAPIClient.swift in Sources */,
 				C231F8FD24237FE900494624 /* DoodleDataSource.swift in Sources */,
 				AB7CD94F24232A5300392F6F /* DoodleViewController.swift in Sources */,
 				AB7CD95024232A5300392F6F /* PhotoViewController.swift in Sources */,
