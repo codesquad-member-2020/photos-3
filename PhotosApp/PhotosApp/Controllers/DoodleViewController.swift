@@ -12,6 +12,7 @@ class DoodleViewController: UICollectionViewController {
     
     private let doodleDataSource = DoodleDataSource()
     private var doodleObserver: NSObjectProtocol?
+    private let cellSize = CGSize(width: 110, height: 50)
     private var selectCellIndexPath: IndexPath?
     
     override func viewDidLoad() {
@@ -33,18 +34,6 @@ class DoodleViewController: UICollectionViewController {
         self.collectionView.addGestureRecognizer(longPressDetect)
         
         setupBarButton()
-    }
-    
-    override init(collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(collectionViewLayout: layout)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    convenience init() {
-        self.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
     
     deinit {
@@ -83,8 +72,7 @@ class DoodleViewController: UICollectionViewController {
 
 extension DoodleViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = collectionView.frame.width / 3 - 1
-        return CGSize(width: size, height: size)
+        return cellSize
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

@@ -12,6 +12,7 @@ class PhotoViewController: UICollectionViewController {
     
     private let photoDataSource = PhotoDataSource()
     private var photoObserver: NSObjectProtocol?
+    private var cellSize: CGSize?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,23 +23,12 @@ class PhotoViewController: UICollectionViewController {
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: PhotoCell.reuseIdentifier)
         
         setupBarButton()
+        setupCellSize()
         
         let center = NotificationCenter.default
         photoObserver = center.addObserver(forName: .photoDidChange) { [weak self] notification in
             DispatchQueue.main.async { self?.updateCollectionView(with: notification.userInfo) }
         }
-    }
-    
-    override init(collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(collectionViewLayout: layout)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    convenience init() {
-        self.init(collectionViewLayout: UICollectionViewFlowLayout())
     }
     
     deinit {
@@ -47,8 +37,14 @@ class PhotoViewController: UICollectionViewController {
     }
     
     @objc private func showDoodles() {
-        let nextViewController = UINavigationController(rootViewController: DoodleViewController())
+        let rootViewController = DoodleViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let nextViewController = UINavigationController(rootViewController: rootViewController)
         present(nextViewController, animated: true)
+    }
+    
+    private func setupCellSize() {
+        let size = collectionView.frame.width / 3 - 1
+        cellSize = CGSize(width: size, height: size)
     }
     
     private func setupBarButton() {
@@ -80,8 +76,7 @@ class PhotoViewController: UICollectionViewController {
 
 extension PhotoViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = collectionView.frame.width / 3 - 1
-        return CGSize(width: size, height: size)
+        return cellSize ?? CGSize()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

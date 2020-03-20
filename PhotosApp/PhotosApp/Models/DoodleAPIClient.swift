@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  DoodleAPIClient.swift
 //  PhotosApp
 //
 //  Created by 임승혁 on 2020/03/18.
@@ -9,28 +9,27 @@
 import Foundation
 import UIKit
 
-class JsonDecoder {
-    private let doodleJsonURL = "https://public.codesquad.kr/jk/doodle.json"
-    private var doodleImgData = [DoodleImageData]()
+class DoodleAPIClient {
+    private let baseURL = "https://public.codesquad.kr/jk/doodle.json"
+    private var doodles = [DoodleImage]()
     
     var doodleCount: Int {
-        return doodleImgData.count
+        return doodles.count
     }
     
     init() {
-        doodleJsonDecode()
+        requestDoodleImages()
     }
     
-    private func doodleJsonDecode() {
-        guard let url = URL(string: doodleJsonURL) else { return }
+    private func requestDoodleImages() {
+        guard let url = URL(string: baseURL) else { return }
         
         URLSession.shared.dataTask(with: url) { (data, response, err) in
             let decoder = JSONDecoder()
             decoder.dateDecodingStrategy = .formatted(.dateFormatter)
             
-            if let data = data,
-                let doodleImgDataList = try? decoder.decode([DoodleImageData].self, from: data) {
-                self.doodleImgData = doodleImgDataList
+            if let data = data, let doodleImages = try? decoder.decode([DoodleImage].self, from: data) {
+                self.doodles = doodleImages
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: .doodleDidChange, object: nil)
                 }
@@ -39,7 +38,7 @@ class JsonDecoder {
     }
     
     func fetchImage(index: Int) -> UIImage {
-        guard let data = try? Data(contentsOf: doodleImgData[index].image),
+        guard let data = try? Data(contentsOf: doodles[index].image),
             let image = UIImage(data: data) else {
             return UIImage()
         }
