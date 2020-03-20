@@ -73,7 +73,10 @@ class DoodleViewController: UICollectionViewController {
     }
     
     @objc private func saveImage() {
-        let cell = self.collectionView.cellForItem(at: selectCellIndexPath!) as! DoodleCell
+        guard let indexPath = selectCellIndexPath else {
+            return
+        }
+        let cell = self.collectionView.cellForItem(at: indexPath) as! DoodleCell
         UIImageWriteToSavedPhotosAlbum(cell.doodleImageView.image!, self, nil, nil)
     }
 }
