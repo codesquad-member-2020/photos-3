@@ -10,7 +10,7 @@ import UIKit
 
 class DoodleCell: UICollectionViewCell {
     
-    private var doodleImageView: UIImageView = {
+    private(set) var doodleImageView: UIImageView = {
         let view = UIImageView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.contentMode = .scaleAspectFit

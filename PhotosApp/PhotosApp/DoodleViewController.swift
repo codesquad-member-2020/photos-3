@@ -12,6 +12,7 @@ class DoodleViewController: UICollectionViewController {
     
     private let doodleDataSource = DoodleDataSource()
     private var doodleObserver: NSObjectProtocol?
+    private var selectCellIndexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +73,8 @@ class DoodleViewController: UICollectionViewController {
     }
     
     @objc private func saveImage() {
-       
+        let cell = self.collectionView.cellForItem(at: selectCellIndexPath!) as! DoodleCell
+        UIImageWriteToSavedPhotosAlbum(cell.doodleImageView.image!, self, nil, nil)
     }
 }
 
@@ -102,6 +104,7 @@ extension DoodleViewController: UIGestureRecognizerDelegate {
             let indexPath = self.collectionView.indexPathForItem(at: point)
 
             if let index = indexPath {
+                self.selectCellIndexPath = index
                 let cell = self.collectionView.cellForItem(at: index)
                 cell?.becomeFirstResponder()
                 enableSelectMenu(cell: cell!)
