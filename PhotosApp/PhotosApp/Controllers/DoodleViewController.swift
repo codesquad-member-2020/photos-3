@@ -29,18 +29,6 @@ class DoodleViewController: UICollectionViewController {
         setupBarButton()
     }
     
-    override init(collectionViewLayout layout: UICollectionViewLayout) {
-        super.init(collectionViewLayout: layout)
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    convenience init() {
-        self.init(collectionViewLayout: UICollectionViewFlowLayout())
-    }
-    
     deinit {
         guard let observer = doodleObserver else { return }
         NotificationCenter.default.removeObserver(observer)
