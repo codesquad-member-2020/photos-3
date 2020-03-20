@@ -12,6 +12,7 @@ class DoodleViewController: UICollectionViewController {
     
     private let doodleDataSource = DoodleDataSource()
     private var doodleObserver: NSObjectProtocol?
+    private let cellSize = CGSize(width: 110, height: 50)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,8 +50,7 @@ class DoodleViewController: UICollectionViewController {
 
 extension DoodleViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size = collectionView.frame.width / 3 - 1
-        return CGSize(width: size, height: size)
+        return cellSize
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
